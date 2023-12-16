@@ -2,12 +2,10 @@
 import './Appa.css';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm';
-// import About from './Components/About';
-import React, { useState } from 'react'
 import Alert from './Components/Alert';
-// import {
-//   BrowserRouter as Router, Route, Link, Routes
-// } from "react-router-dom";
+import About from './Components/About';
+import React, { useState } from 'react'
+// import Alert from './Components/Alert';
 
 function App() {
   const [mode, setmode] = useState('light');
@@ -25,10 +23,22 @@ function App() {
   }
 
   // FUNCTION OF DARK MODE 
-  const togglemode = () => {
+const removebg=()=>{
+  document.body.classList.remove('bg-light')
+  document.body.classList.remove('bg-white')
+  document.body.classList.remove('bg-dark')
+  document.body.classList.remove('bg-primary')
+  document.body.classList.remove('bg-warning')
+  document.body.classList.remove('bg-success')
+  document.body.classList.remove('bg-danger')
+}
+
+  const togglemode = (cls) => {
+    removebg();
+    document.body.classList.add('bg-'+cls)
     if (mode === 'light') {
       setmode('dark');
-      document.body.style.backgroundColor = 'black';
+      document.body.style.backgroundColor = '#343a40';
       showAlert("Dark Mode has been Enabled", "Success");
       document.title = 'TextUtils Dark Mode'
       setTimeout(() => {
@@ -48,17 +58,18 @@ function App() {
   return (
     <>
       {/* <Router> */}
-        <Navbar title="TextUtils" mode={mode} togglemode={togglemode} aboutText='About' />
-        <Alert alert={alert} />
-        <div className="container">
-          {/* <Routes>
-            <Route path="/about" element={<About />}>
-            </Route> */}
-            {/* <Route path="/" element={<TextForm heading="Enter text to analyze"  mode={mode} showAlert={showAlert} />}> */}
-            <TextForm heading="Enter text to analyze"  mode={mode} showAlert={showAlert}/>
-            {/* </Route>
-          </Routes> */}
-        </div>
+      <Navbar title="TextOps" mode={mode} togglemode={togglemode} aboutText='About' />
+      <Alert alert={alert} />
+      <div className="container my-3">
+        <TextForm showAlert={showAlert} heading="TextUtils - Wod Counter, Chracter Counter, Remove extra spaces" mode={mode} />
+      </div>
+      <About mode={mode} />
+      {/* <Routes> */}
+      {/* <Route path="/about"> */}
+      {/* </Route> */}
+      {/* <Route path="/"> */}
+      {/* </Route> */}
+      {/* </Routes> */}
       {/* </Router> */}
     </>
   )
