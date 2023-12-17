@@ -42,7 +42,7 @@ const removebg=()=>{
       showAlert("Dark Mode has been Enabled", "Success");
       document.title = 'TextUtils Dark Mode'
       setTimeout(() => {
-        document.title = 'TextUtils'
+        document.title = 'TextOps'
       }, 5000);
     }
     else {
@@ -51,7 +51,7 @@ const removebg=()=>{
       showAlert("Light Mode has been Enabled", "Success");
       document.title = 'TextUtils Light Mode'
       setTimeout(() => {
-        document.title = 'TextUtils'
+        document.title = 'TextOps'
       }, 5000);
     }
   }
